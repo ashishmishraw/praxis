@@ -93,7 +93,7 @@ public class MyDoubLinkedList<T> {
 		
 		Node tmp = head;
 		head = head.next;
-		
+		this.size--;
 		return tmp;
 	}
 	
@@ -111,6 +111,7 @@ public class MyDoubLinkedList<T> {
 		}
 		//tail.prev = null; not required?
 		tail = tail.prev;
+		this.size--;
 		return tmp;
 	}
 	
