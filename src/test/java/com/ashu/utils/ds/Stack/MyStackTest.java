@@ -13,7 +13,7 @@ public class MyStackTest {
 	@Before
 	public void setUp(){
 		
-		stack = new MyStack<>(5);
+		stack = new MyStack<String>(5);
 	}
 	
 	
