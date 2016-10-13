@@ -14,7 +14,10 @@ public class MyDoubLinkedList<T> {
 	public Node <T> tail = null; //tail pointer
 	public int size = 0; //size of linked-list
 	
-	
+	/**
+	 * Adds the value at front as a Node in list
+	 * @param value
+	 */
 	public void addAtFront( T value) {
 		
 		Node<T> newNode = new Node<T>(value);
@@ -31,7 +34,10 @@ public class MyDoubLinkedList<T> {
 	}
 	
 	
-	
+	/**
+	 * Adds the value at last as a Node in list
+	 * @param value
+	 */
 	public void addAtLast(T value) {
 		
 		Node<T> newNode = new Node<T>(value);
@@ -47,6 +53,8 @@ public class MyDoubLinkedList<T> {
 		this.size++;
 	}
 	
+	
+	
 	/**
 	 * O(N) complexity
 	 * @param index
@@ -54,50 +62,79 @@ public class MyDoubLinkedList<T> {
 	 */
 	public void add(int index, T val) {
 		
-		if (index ==0) {
+		if (index ==0) { // first index? - add at front
 			this.addAtFront(val);
-		} else if (index == (this.size)) {
+		} else if (index >= (this.size)) { //index same or greater than size? - always add at last
 			this.addAtLast(val);
 		} else {
 			Node n = this.head;
 			//iterate till the index
-			for ( int i=0; i <= index; i++) {
-				if (i== index) break;
+			for ( int i=0; i < index; i++) {
 				n = n.next;
 			}
+			
 			Node<T> newNode = new Node<T>(val);
-			Node current = n;
-			newNode.next = current.next;
-			newNode.prev = n;
-			if (newNode.next == null)
-				this.tail = newNode;
-			else {
-				current = current.next;
-				current.prev = newNode;
-			}
-			n.next = newNode;
+			
+			newNode.next = n; 
+			newNode.prev = n.prev;
+			n.prev.next = newNode;
+			n.prev = newNode;
+		
 			this.size++;
 		}
 	}
 	
 	
+	/**
+	 * Looks up the particular {@link Node} at given index
+	 * @param index
+	 * @return {@link Node}
+	 */
+	public Node peek(int index ) {
+		
+		if (index ==0) return head;
+		
+		if (index == this.size-1 ) return tail;
+		
+		if (index < this.size-1 ) {
+			
+			Node n = this.head;
+			for (int i=0; i < index; i++) {
+				n = n.next;
+			}	
+			return n;
+		}
+		
+		return null;
+	}
 	
+	
+	/**
+	 * Removes first node from list
+	 * @return {@link Node}
+	 */
 	public Node<T> removeFirst() {
 		
 		if (size ==0) return null;
 		
-		if (size ==1) 
-			tail = null;
-		else 
-			head.prev = null;
-		
 		Node tmp = head;
-		head = head.next;
+		if (size ==1) { //can u say "if (head.next ==null)" ?
+			tail = null;
+		} else {
+			head.next.prev = null;
+			//head.next = null; //this causes problem .. only remove inward references, not outward refs from node which is removed 
+		}
+		
+		head = tmp.next;
 		this.size--;
 		return tmp;
 	}
 	
 	
+	/**
+	 * Removes last node from list
+	 * @return {@link Node}
+	 */
 	public Node<T> removeLast() {
 		
 		Node tmp = tail;
@@ -116,6 +153,33 @@ public class MyDoubLinkedList<T> {
 	}
 	
 	
+	/**
+	 * Reoves the node at given index from list 
+	 * @param index
+	 */
+	public Node<T> remove(int index) {
+		
+		if (index ==0) return removeFirst();
+		
+		if (index == size-1) return removeLast();
+		
+		if (index < size-1) {
+			
+			Node n = head;
+			for (int i=0; i < index; i++) {
+				n = n.next;
+			}
+			
+			n.next.prev = n.prev;
+			n.prev.next = n.next;
+			
+			return n;
+		}
+		
+		return null;
+	}
+	
+	
 	
 	/**
 	 * Inner class
@@ -123,7 +187,7 @@ public class MyDoubLinkedList<T> {
 	 *
 	 * @param <T>
 	 */
-	private static class Node <T> {
+	public static class Node <T> {
 		
 		Node( T val) {
 			next = null;
@@ -137,11 +201,16 @@ public class MyDoubLinkedList<T> {
 	}
 	
 	
+	/**
+	 * Display this doubly linked list (only backwards?)
+	 * 
+	 */
 	public String toString() {
 		StringBuilder printLine = new StringBuilder();
 		
 		if (size ==0) {
-			return null;
+			System.out.println("list is empty");
+			return "{}";
 		}
 		
 		Node<T> n = this.tail;		

@@ -17,27 +17,44 @@ public class MyDoubLinkedListTest {
 	
 	@Test
 	public void test() {
-		//fail("Not yet implemented");
 		
 		list.add(0, "tom");
 		list.add(1, "dick");
 		list.add(2, "harry");
 		
 		assertTrue(list.size==3);
-		
-		list.removeFirst();
-		
+		System.out.println(list.toString());
+   
+		assertEquals("tom", list.removeFirst().value);				
 		assertTrue(list.size==2);
 		
-		list.removeLast();
+		assertEquals("dick", list.peek(0).value);
+		assertEquals("harry", list.peek(1).value);
+		System.out.println(list.toString());
+		
+		assertEquals("harry", list.removeLast().value);
 		assertTrue(list.size==1);
 		
-		list.toString();
+		System.out.println(list.toString());
 		
-		list.removeLast();
+		assertEquals("dick",list.removeLast().value);
 		assertTrue(list.size==0);
+		
+		list.addAtFront("ada");
+		list.addAtLast("sam");
+		assertTrue(list.size==2);
+		System.out.println(list.toString());
+		
+		assertEquals("sam", list.remove(1).value);
+		assertTrue(list.size==1);
+		System.out.println(list.toString());
+		
+		assertEquals("ada", list.remove(0).value);
+		assertTrue(list.size==0);
+		System.out.println(list.toString());
 	}
 	
+
 	
 	@After
 	public void tearDown(){
