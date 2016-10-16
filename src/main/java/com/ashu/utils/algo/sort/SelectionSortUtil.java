@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 /**
  * SelectioSort algorithm implementation
+ * 
+ * Sorts by finding the minimum element, and then swapping it with the first element
+ * The above logic continues in iterations with array size getting reduced by each element from left
+ * 
  * @author ashismishraw@github.com
  *
  */
@@ -27,7 +31,8 @@ public class SelectionSortUtil {
 	
 	
 	/**
-	 * Complexity - O(N*N)
+	 * Selection sort algo impl
+	 * Complexity - O(N*N) = Quadratic
 	 * @param arr
 	 * @param recursive
 	 * @return
@@ -64,7 +69,7 @@ public class SelectionSortUtil {
 	 * @param cursor
 	 * @return
 	 */
-	public static int[] sortRecursively(int[] arr, int cursor) {
+	private static int[] sortRecursively(int[] arr, int cursor) {
 		
 		if ( cursor>= arr.length) {
 			return arr;
