@@ -2,7 +2,7 @@ package com.ashu.utils.algo.search;
 
 /**
  * Simple binary serach implementation utility
- * @author ashismis
+ * @author ashismishraw
  *
  */
 public class BinarySearchUtil {
