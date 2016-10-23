@@ -7,6 +7,9 @@ import java.util.Arrays;
  * Sorts at time of insertion, by taking each element next to start and comparing it with it
  * Maintains two set of arrays (one sorted, other unsorted) in each iteration
  * 
+ * If element next to start is greater than it, they both form a sorted array, moving start to next..
+ * .. which is first element of remaining unsorted array
+ * 
  * @author ashishmishraw@github.com
  *
  */
