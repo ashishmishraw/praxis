@@ -18,7 +18,7 @@ import java.util.Arrays;
     
     
     
- * @author ashismis
+ * @author http://github.com/ashismishraw
  *
  */
 public class QuickSort {
