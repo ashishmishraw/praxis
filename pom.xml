@@ -27,6 +27,7 @@
 <build>
     <plugins>
   <plugin>
+	<!-- maven compiler for java 8 -->
     <artifactId>maven-compiler-plugin</artifactId>
       <configuration>
        <source>1.8</source>
