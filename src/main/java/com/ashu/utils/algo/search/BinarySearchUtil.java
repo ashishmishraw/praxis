@@ -27,7 +27,7 @@ public class BinarySearchUtil {
 				System.out.println("Looking for " + elem + " between position " + start + " and " + end + " .... ");
 				mid = (start + end)/2;
 				if (elem == array[mid]) {
-					result = mid;
+					return mid;
 					//break;  --> used this earlier with while (true) but common mistake 
 					        //--> this will keep finding a non-existing element infinitely in loop
 				}

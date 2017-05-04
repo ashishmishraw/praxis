@@ -326,6 +326,9 @@ public class BST <T extends Comparable<T>> implements Iterable<T> {
 		   }
 
 
+
+
+
 		/*****************************************************
 		*
 		*            TREE ITERATOR
@@ -410,6 +413,9 @@ public class BST <T extends Comparable<T>> implements Iterable<T> {
 			
 		   public int compare(Integer x, Integer y)
 		   {
+
 		        return y-x;
 		   }
+
+
 		}

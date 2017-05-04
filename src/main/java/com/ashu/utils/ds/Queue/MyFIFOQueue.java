@@ -2,6 +2,8 @@ package com.ashu.utils.ds.Queue;
 
 import com.ashu.utils.ds.LinkedList.MySingLinkedList;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * My own implementation of FIFO Queue
  * @author ashishmishraw@bitbucket.org
@@ -34,9 +36,10 @@ public class MyFIFOQueue<T> {
 	 * by adding it to the last index
 	 * @param T - item
 	 */
-	public synchronized void enqueue(T item) 
+	public synchronized void enqueue(T item)
 			throws InterruptedException, IndexOutOfBoundsException {
-		
+
+
 		if (blocking) {
 			while (isFull()) { //until queue limit reduces
 				wait(); //throttle producer 
@@ -48,6 +51,7 @@ public class MyFIFOQueue<T> {
 		}
 		this.list.addAtLast(item);
 		notifyAll();
+
 		size = this.list.size;
 	}
 	
@@ -85,6 +89,9 @@ public class MyFIFOQueue<T> {
 	public boolean isFull() {
 		return this.size == this.upperBound;
 	}
-	
 
+	public static void main(String[] args) {
+		MyFIFOQueue<String> queue = new MyFIFOQueue<>(10, true);
+		System.out.println("tata");
+	}
 }

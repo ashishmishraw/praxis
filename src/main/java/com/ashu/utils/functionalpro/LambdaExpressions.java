@@ -1,4 +1,4 @@
-package com.ashu.utils.exploratory;
+package com.ashu.utils.functionalpro;
 
 import java.util.Arrays;
 import java.util.Comparator;

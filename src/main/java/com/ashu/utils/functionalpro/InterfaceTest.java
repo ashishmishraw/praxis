@@ -1,4 +1,4 @@
-package com.ashu.utils.exploratory;
+package com.ashu.utils.functionalpro;
 
 /**
  * Created by ashishmishraw on 20/12/16.

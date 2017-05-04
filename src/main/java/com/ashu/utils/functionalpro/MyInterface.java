@@ -1,4 +1,4 @@
-package com.ashu.utils.exploratory;
+package com.ashu.utils.functionalpro;
 
 /**
     The functional interface is an interface with just one single method

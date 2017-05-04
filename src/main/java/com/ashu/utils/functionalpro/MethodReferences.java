@@ -1,8 +1,9 @@
-package com.ashu.utils.exploratory;
+package com.ashu.utils.functionalpro;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.function.BiFunction;
 
 /**
  * Created by ashishmishraw on 20/12/16.
@@ -30,6 +31,12 @@ public class MethodReferences {
         Car c3 = Car.create(Car::new);
         //Method reference passed over an instance - Sytnax is (instance::method) where method accepts only single argument
         cars.forEach(c3::follow);
+
+
+        //Let's pass multi-argument constructor which is not dependent on create method of class <T>; like in case of Car.create()
+        BiFunction<Integer, String, ParameterizeBehaviors.Apple> apple = ParameterizeBehaviors.Apple::new;
+        ParameterizeBehaviors.Apple  a1 = apple.apply(120, "red");
+
 
     }
 
