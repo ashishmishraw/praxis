@@ -12,8 +12,7 @@ public class FibonnacciUtilTest {
     @Test
     public void generateNthFibonnacciElement() throws Exception {
 
-        int expected = FibonnacciUtil.generateNthFibonnacciElement(5);
-
+        int expected = FibonnacciUtil.getNthFibonnacciElement(5);
         assertEquals(expected, 8);
 
         assertEquals(expected, -1);

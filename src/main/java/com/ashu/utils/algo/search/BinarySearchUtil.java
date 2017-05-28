@@ -24,7 +24,7 @@ public class BinarySearchUtil {
 		if (!recursive) {
 			
 			while (start <= end) { // important! common mistake : do not use "while (true) " !!
-				System.out.println("Looking for " + elem + " between position " + start + " and " + end + " .... ");
+				//System.out.println("Looking for " + elem + " between position " + start + " and " + end + " .... ");
 				mid = (start + end)/2;
 				if (elem == array[mid]) {
 					return mid;
@@ -55,7 +55,7 @@ public class BinarySearchUtil {
 	 */
 	private static int searchRecursively(int[] array, int start, int end, int elem) {
 		
-		System.out.println("Looking for " + elem + " between position " + start + " and " + end + " .... ");
+		//System.out.println("Looking for " + elem + " between position " + start + " and " + end + " .... ");
 		if (start > end)  {
 			return -1;
 		} else {

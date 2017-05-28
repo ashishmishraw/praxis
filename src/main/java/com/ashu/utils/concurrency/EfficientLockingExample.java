@@ -1,4 +1,4 @@
-package com.ashu.utils.puzz;
+package com.ashu.utils.concurrency;
 
 import java.util.concurrent.locks.ReentrantLock;
 

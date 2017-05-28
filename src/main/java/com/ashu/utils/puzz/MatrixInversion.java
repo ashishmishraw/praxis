@@ -3,17 +3,18 @@ package com.ashu.utils.puzz;
 import java.util.Random;
 
 /**
+ * Transpose MxN matrix
  * Created by mishra.ashish@icloud.com
  */
 public class MatrixInversion {
 
     static int matrix[][] ;
 
-    public static void init(int n ) {
+    public static void init(int m, int n ) {
 
-        matrix = new int[n][n];
+        matrix = new int[m][n];
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 matrix[i][j] = new Random().nextInt(50)  + 1;
             }
@@ -22,51 +23,28 @@ public class MatrixInversion {
 
 
     public static void main(String[] args) {
-        init(5);
-        printMatrix(matrix);
 
-        //printMatrix(transposeMatrix(matrix));
-        printMatrix(mirrorMatrix(matrix));
+        init(5, 6);
+        printMatrix(matrix);
+        System.out.println("\n---------------");
+        printMatrix(transposeMatrix(matrix));
+
+        System.out.println("this is " + matrix.length + " by " + matrix[0].length + " matrix");
     }
+
+
 
     private static int[][] transposeMatrix(int[][] matrix) {
 
-        int invertedMatrix[][]  = new int[matrix.length][matrix.length];
+        int invertedMatrix[][]  = new int[matrix[0].length][matrix.length];
 
         for (int i = 0; i < matrix.length; i++) {
 
-            for (int j = 0; j < matrix.length; j++) {
-               invertedMatrix[i][j] = matrix[j][i];
+            for (int j = 0; j < matrix[0].length; j++) {
+               invertedMatrix[j][i] = matrix[i][j];
             }
         }
         return invertedMatrix;
-    }
-
-
-    private static int[][] mirrorMatrix(int[][] matrix) {
-
-        int mirroredMatrix[][]  = new int[matrix.length][matrix.length];
-        //Stack<Integer> stack = new Stack<>();
-
-        for (int i = 0; i < matrix.length; i++) {
-
-            System.out.print(i);
-            for (int j = 0; j < matrix.length; j++) {
-
-                System.out.println(j);
-            }
-        }
-
-/*
-        for (int i = 0; i < matrix.length; i++) {
-
-            for (int j = 0; j < matrix.length; j++) {
-                mirroredMatrix[j][i] = stack.pop();
-            }
-
-        }
-*/
-        return mirroredMatrix;
     }
 
 
@@ -74,7 +52,7 @@ public class MatrixInversion {
 
         for (int i = 0; i < matrix.length; i++) {
             System.out.println("\n");
-            for (int j = 0; j < matrix.length; j++) {
+            for (int j = 0; j < matrix[0].length; j++) {
                 String toPrint = " " + matrix[i][j];
                 System.out.print( toPrint);
             }

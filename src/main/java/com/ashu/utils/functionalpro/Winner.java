@@ -127,25 +127,34 @@ public class Winner {
         System.out.println("mapWinnerNameLengthToList " + mapWinnerNameLengthToList);
 
         // matching - allMatch, noneMatch
-        Optional<Winner> winner2012 = tdfWinners.stream().filter(w -> w.getName().contains("Wiggins")).findAny();
+        Optional<Winner> winner2012 = tdfWinners.stream()
+                .filter(w -> w.getName().contains("Wiggins"))
+                .findAny();
 
         // winner2012 - Bradley Wiggins
         System.out.println("winner2012 - " + winner2012.get());
-        Optional<Integer> winnerYear2014 = tdfWinners.stream().map(Winner::getYear).filter(x -> x == 2014).findFirst();
+        Optional<Integer> winnerYear2014 = tdfWinners.stream().map(Winner::getYear)
+                .filter(x -> x == 2014)
+                .findFirst();
 
         // winnerYear2014 - 2014
         System.out.println("winnerYear2014 - " + winnerYear2014.get());
 
         // reducing - 0 --> initial value
-        int totalDistance = tdfWinners.stream().map(Winner::getLengthKm).reduce(0, Integer::sum);
+        int totalDistance = tdfWinners.stream().map(Winner::getLengthKm)
+                .reduce(0, Integer::sum);
 
         // totalDistance - 38767
         System.out.println("totalDistance - " + totalDistance);
-        Optional<Integer> shortestYear = tdfWinners.stream().map(Winner::getLengthKm).reduce(Integer::min);
+        Optional<Integer> shortestYear = tdfWinners.stream()
+                .map(Winner::getLengthKm)
+                .reduce(Integer::min);
 
         // shortestYear - 3360
         System.out.println("shortestYear - " + shortestYear.get());
-        Optional<Integer> longestYear = tdfWinners.stream().map(Winner::getLengthKm).reduce(Integer::max);
+        Optional<Integer> longestYear = tdfWinners.stream()
+                .map(Winner::getLengthKm)
+                .reduce(Integer::max);
 
         // longestYear - 3661
         System.out.println("longestYear - " + longestYear.get());
@@ -159,23 +168,28 @@ public class Winner {
         System.out.println("fastestTDF - " + fastestTDF.getAsDouble());
 
         // groupingby - make a map whose keys are names
-        Map<String, List<Winner>> namesVsWinner = tdfWinners.stream().collect(groupingBy(Winner::getName));
+        Map<String, List<Winner>> namesVsWinner = tdfWinners.stream()
+                .collect(groupingBy(Winner::getName));
 
         // namesVsWinner - {Bradley Wiggins=[Bradley Wiggins], Carlos Sastre=[Carlos Sastre], Cadel Evans=[Cadel Evans], Óscar Pereiro=[Óscar Pereiro], Chris Froome=[Chris Froome, Chris Froome, Chris Froome], Andy Schleck=[Andy Schleck], Alberto Contador=[Alberto Contador, Alberto Contador], Vincenzo Nibali=[Vincenzo Nibali]}
         System.out.println("namesVsWinner - " + namesVsWinner);
 
         // join strings
-        String allTDFWinnersTeamsCSV = tdfWinners.stream().map(Winner::getTeam).collect(joining(", "));
+        String allTDFWinnersTeamsCSV = tdfWinners.stream()
+                .map(Winner::getTeam)
+                .collect(joining(", "));
 
         // allTDFWinnersTeams Caisse d'Epargne–Illes Balears, Discovery Channel, Team CSC, Astana, Team Saxo Bank, BMC Racing Team, Team Sky, Team Sky, Astana, Team Sky, Team Sky
         System.out.println("allTDFWinnersTeams " + allTDFWinnersTeamsCSV);
 
         // grouping
-        Map<String, List<Winner>> winnersByNationality = tdfWinners.stream().collect(groupingBy(Winner::getNationality));
+        Map<String, List<Winner>> winnersByNationality = tdfWinners.stream()
+                .collect(groupingBy(Winner::getNationality));
 
         // winnersByNationality - {Great Britain=[Bradley Wiggins, Chris Froome, Chris Froome, Chris Froome], Luxembourg=[Andy Schleck], Italy=[Vincenzo Nibali], Australia=[Cadel Evans], Spain=[Óscar Pereiro, Alberto Contador, Carlos Sastre, Alberto Contador]}
         System.out.println("winnersByNationality - " + winnersByNationality);
-        Map<String, Long> winsByNationalityCounting = tdfWinners.stream().collect(groupingBy(Winner::getNationality, counting()));
+        Map<String, Long> winsByNationalityCounting = tdfWinners.stream()
+                .collect(groupingBy(Winner::getNationality, counting()));
 
         // winsByNationalityCounting - {Great Britain=4, Luxembourg=1, Italy=1, Australia=1, Spain=4}
         System.out.println("winsByNationalityCounting - " + winsByNationalityCounting);

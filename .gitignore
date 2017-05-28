@@ -4,4 +4,5 @@ bin/
 .classpath
 .project
 out/
-.idea`
+.idea
+src/main/java/com/ashu/utils/puzz/hosts_access_log_00.txt

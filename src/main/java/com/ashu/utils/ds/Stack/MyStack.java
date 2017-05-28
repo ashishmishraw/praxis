@@ -11,11 +11,11 @@ import java.util.ArrayList;
  */
 public class MyStack<T> {
 	
-	MyStack() {
+	public MyStack() {
 		list = new ArrayList<T>();
 	}
 	
-	MyStack(int limit) {
+	public MyStack(int limit) {
 		this.upperBound = limit;
 		list = new ArrayList<T>(limit);
 	}
@@ -110,6 +110,11 @@ public class MyStack<T> {
 		printLine.append(list.toString());
 		printLine.append("Top--> Stack[" + top + "] = " + list.get(top) + "; size = " + this.size);
 		return printLine.toString();
+	}
+
+
+	public int size() {
+		return this.size;
 	}
 
 }
